@@ -296,6 +296,30 @@
   .status-dev  { background: rgba(26,115,181,0.12); color: var(--accent2); border: 1px solid rgba(26,115,181,0.2); }
   .proj-card.featured { grid-column: span 2; }
   .proj-card.featured .proj-desc { max-width: 560px; }
+  .proj-preview {
+    width: 100%; aspect-ratio: 16/9;
+    border-radius: 10px; overflow: hidden;
+    margin-bottom: 18px;
+    border: 1px solid var(--border);
+    background: var(--navy2);
+  }
+  .proj-preview img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .proj-card:hover .proj-preview img { transform: scale(1.03); }
+  .proj-preview-placeholder {
+    width: 100%; aspect-ratio: 16/9;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--navy2);
+    margin-bottom: 18px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted); font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.5px; text-transform: uppercase;
+  }
 
   /* ─── EXPERIENCE ─── */
   #experience { background: var(--navy2); }
@@ -534,9 +558,11 @@
           <div class="proj-icon">🧗</div>
           <div class="proj-links">
             <a href="https://cragtrails.vercel.app" target="_blank" class="proj-link">Live ↗</a>
-            <a href="https://github.com/KolinCunningham/cragtrails" target="_blank" class="proj-link">GitHub</a>
           </div>
         </div>
+        <a href="https://cragtrails.vercel.app" target="_blank" class="proj-preview">
+          <img src="screenshots/cragtrails.png" alt="CragTrails screenshot" loading="lazy">
+        </a>
         <div class="proj-name">CragTrails</div>
         <div class="proj-desc">
           Open-source rock climbing trail guide — the AllTrails of climbing. Powered by OpenBeta + Mountain Project data with a clean, accessible UI designed for everyone from beginners to pros. Built with a skeptical multi-agent CEO review process.
@@ -555,9 +581,11 @@
           <div class="proj-icon">⚡</div>
           <div class="proj-links">
             <a href="https://swancars-mu.vercel.app" target="_blank" class="proj-link">Live ↗</a>
-            <a href="https://github.com/KolinCunningham/swancars" target="_blank" class="proj-link">GitHub</a>
           </div>
         </div>
+        <a href="https://swancars-mu.vercel.app" target="_blank" class="proj-preview">
+          <img src="screenshots/swancars.png" alt="Swan Cars screenshot" loading="lazy">
+        </a>
         <div class="proj-name">Swan Cars</div>
         <div class="proj-desc">
           EV carshare network platform — the digital product behind Swan Energy's EV mobility concept. Connects mobility demand with energy sector revenue streams.
@@ -574,9 +602,11 @@
           <div class="proj-icon">🤝</div>
           <div class="proj-links">
             <a href="https://business-delegate-kolins-projects-31ac325f.vercel.app" target="_blank" class="proj-link">Live ↗</a>
-            <a href="https://github.com/KolinCunningham/BusinessDelegate" target="_blank" class="proj-link">GitHub</a>
           </div>
         </div>
+        <a href="https://business-delegate-kolins-projects-31ac325f.vercel.app" target="_blank" class="proj-preview">
+          <img src="screenshots/businessdelegate.png" alt="BusinessDelegate screenshot" loading="lazy">
+        </a>
         <div class="proj-name">BusinessDelegate</div>
         <div class="proj-desc">
           AI-powered business delegation and workflow management tool built with TypeScript. Helps founders and operators delegate work intelligently.
@@ -593,9 +623,11 @@
           <div class="proj-icon">🗺️</div>
           <div class="proj-links">
             <a href="https://mosman-planning.vercel.app" target="_blank" class="proj-link">Live ↗</a>
-            <a href="https://github.com/KolinCunningham/mosman-planning" target="_blank" class="proj-link">GitHub</a>
           </div>
         </div>
+        <a href="https://mosman-planning.vercel.app" target="_blank" class="proj-preview">
+          <img src="screenshots/mosmanplanning.png" alt="Mosman Planning screenshot" loading="lazy">
+        </a>
         <div class="proj-name">Mosman Planning Intelligence</div>
         <div class="proj-desc">
           Community-led planning system for Mosman LGA — LEP map viewer, suggestion engine, give-take audit, and 20-year horizon analysis. Civic tech in production.
@@ -610,10 +642,9 @@
       <div class="proj-card">
         <div class="proj-header">
           <div class="proj-icon">🏭</div>
-          <div class="proj-links">
-            <a href="https://github.com/KolinCunningham/ptbmanufacturing" target="_blank" class="proj-link">GitHub</a>
-          </div>
+          <div class="proj-links"></div>
         </div>
+        <div class="proj-preview-placeholder">Coming Soon</div>
         <div class="proj-name">PTB Manufacturing</div>
         <div class="proj-desc">
           Official website for PTB Manufacturing — Australian beauty and personal care product manufacturing. TypeScript build with production-grade design.
@@ -628,10 +659,9 @@
       <div class="proj-card">
         <div class="proj-header">
           <div class="proj-icon">✈️</div>
-          <div class="proj-links">
-            <a href="https://github.com/KolinCunningham/Tramada" target="_blank" class="proj-link">GitHub</a>
-          </div>
+          <div class="proj-links"></div>
         </div>
+        <div class="proj-preview-placeholder">Coming Soon</div>
         <div class="proj-name">Tramada</div>
         <div class="proj-desc">
           Travel management integration project. JavaScript-based tooling around the Tramada travel platform ecosystem.
