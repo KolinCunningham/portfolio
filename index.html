@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kolin Cunningham — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:    #0a1628;
+    --navy2:   #0f2040;
+    --blue:    #1b3a5c;
+    --accent:  #1a73b5;
+    --accent2: #2590d4;
+    --teal:    #00c9a7;
+    --text:    #e8edf4;
+    --muted:   #8a9ab5;
+    --card:    #111e30;
+    --card2:   #162236;
+    --border:  #1e3050;
+    --rule:    rgba(255,255,255,0.07);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--navy);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,22,40,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-size: 1rem; font-weight: 800; letter-spacing: -0.3px;
+    color: var(--text);
+  }
+  .nav-logo span { color: var(--accent2); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none;
+    font-size: 0.82rem; font-weight: 600; letter-spacing: 0.3px;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 120px 32px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 60% 40%, rgba(26,115,181,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 20% 80%, rgba(0,201,167,0.06) 0%, transparent 50%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 0; opacity: 0.03;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .hero-inner {
+    position: relative; z-index: 1;
+    max-width: 860px; width: 100%;
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--accent2);
+    margin-bottom: 18px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 28px; height: 2px; background: var(--accent2);
+  }
+  h1 {
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    color: #fff;
+    margin-bottom: 22px;
+  }
+  h1 span { color: var(--accent2); }
+  .hero-sub {
+    font-size: 1.05rem; font-weight: 400;
+    color: var(--muted); line-height: 1.7;
+    max-width: 640px;
+    margin-bottom: 36px;
+  }
+  .hero-tags {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-bottom: 44px;
+  }
+  .tag {
+    background: rgba(26,115,181,0.12);
+    border: 1px solid rgba(26,115,181,0.25);
+    color: var(--accent2);
+    font-size: 0.76rem; font-weight: 600;
+    padding: 5px 14px; border-radius: 20px;
+    letter-spacing: 0.3px;
+  }
+  .tag.teal {
+    background: rgba(0,201,167,0.1);
+    border-color: rgba(0,201,167,0.25);
+    color: var(--teal);
+  }
+  .hero-cta {
+    display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 26px; border-radius: 8px;
+    font-size: 0.85rem; font-weight: 700;
+    text-decoration: none; transition: all 0.2s;
+    letter-spacing: 0.2px;
+  }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+    border: 1px solid var(--accent);
+  }
+  .btn-primary:hover { background: var(--accent2); border-color: var(--accent2); }
+  .btn-ghost {
+    background: transparent; color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover { border-color: var(--muted); background: rgba(255,255,255,0.04); }
+  .hero-scroll {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    z-index: 1;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    color: var(--muted); font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .scroll-dot {
+    width: 4px; height: 24px;
+    border-radius: 4px;
+    background: linear-gradient(to bottom, var(--accent2), transparent);
+    animation: scrollpulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollpulse {
+    0%,100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.15); }
+  }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: 96px 32px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--accent2);
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before {
+    content: ''; display: block;
+    width: 20px; height: 2px; background: var(--accent2);
+  }
+  .section-title {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 800; letter-spacing: -0.5px;
+    color: #fff; margin-bottom: 56px;
+  }
+  .section-title span { color: var(--accent2); }
+
+  /* ─── ABOUT ─── */
+  #about { background: var(--navy2); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: start;
+  }
+  .about-text p {
+    color: var(--muted); line-height: 1.75; margin-bottom: 16px;
+  }
+  .about-text p strong { color: var(--text); }
+  .about-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .stat-num {
+    font-size: 2rem; font-weight: 900;
+    color: var(--accent2); line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 0.78rem; font-weight: 600;
+    color: var(--muted); line-height: 1.4;
+    text-transform: uppercase; letter-spacing: 0.3px;
+  }
+  .about-certs {
+    margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .cert-pill {
+    background: var(--card); border: 1px solid var(--border);
+    color: var(--muted); font-size: 0.72rem; font-weight: 600;
+    padding: 4px 12px; border-radius: 20px;
+  }
+
+  /* ─── PROJECTS ─── */
+  #projects { background: var(--navy); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .proj-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    display: flex; flex-direction: column;
+    transition: border-color 0.25s, transform 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .proj-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--teal));
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .proj-card:hover { border-color: rgba(26,115,181,0.4); transform: translateY(-3px); }
+  .proj-card:hover::before { opacity: 1; }
+  .proj-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 12px;
+  }
+  .proj-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: rgba(26,115,181,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+  }
+  .proj-links { display: flex; gap: 8px; }
+  .proj-link {
+    color: var(--muted); text-decoration: none;
+    font-size: 0.75rem; font-weight: 600;
+    padding: 4px 10px; border-radius: 6px;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .proj-link:hover { color: var(--text); border-color: var(--accent); }
+  .proj-name {
+    font-size: 1.05rem; font-weight: 700;
+    color: #fff; margin-bottom: 8px;
+  }
+  .proj-desc {
+    font-size: 0.85rem; color: var(--muted);
+    line-height: 1.65; flex: 1; margin-bottom: 20px;
+  }
+  .proj-footer {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .proj-lang {
+    font-size: 0.72rem; font-weight: 700;
+    color: var(--muted); letter-spacing: 0.5px;
+    text-transform: uppercase;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .lang-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+  }
+  .lang-js { background: #f7df1e; }
+  .lang-ts { background: #3178c6; }
+  .lang-html { background: #e34c26; }
+  .proj-status {
+    font-size: 0.7rem; font-weight: 700;
+    padding: 3px 10px; border-radius: 20px;
+    letter-spacing: 0.3px;
+  }
+  .status-live { background: rgba(0,201,167,0.12); color: var(--teal); border: 1px solid rgba(0,201,167,0.2); }
+  .status-dev  { background: rgba(26,115,181,0.12); color: var(--accent2); border: 1px solid rgba(26,115,181,0.2); }
+  .proj-card.featured { grid-column: span 2; }
+  .proj-card.featured .proj-desc { max-width: 560px; }
+
+  /* ─── EXPERIENCE ─── */
+  #experience { background: var(--navy2); }
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 8px; bottom: 0;
+    width: 2px; background: var(--border);
+  }
+  .job-item { position: relative; margin-bottom: 52px; }
+  .job-item:last-child { margin-bottom: 0; }
+  .job-dot {
+    position: absolute; left: -38px; top: 6px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--navy2);
+    box-shadow: 0 0 0 3px rgba(26,115,181,0.25);
+  }
+  .job-dot.current { background: var(--teal); box-shadow: 0 0 0 3px rgba(0,201,167,0.25); }
+  .job-meta {
+    display: flex; flex-wrap: wrap;
+    align-items: baseline; gap: 8px 16px;
+    margin-bottom: 4px;
+  }
+  .job-company-name {
+    font-size: 0.75rem; font-weight: 700;
+    color: var(--accent2); letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+  .job-dates-badge {
+    font-size: 0.72rem; font-weight: 600;
+    color: var(--muted);
+    background: var(--card); border: 1px solid var(--border);
+    padding: 2px 10px; border-radius: 20px;
+  }
+  .job-role {
+    font-size: 1.1rem; font-weight: 700;
+    color: #fff; margin-bottom: 10px;
+  }
+  .job-bullets-list { list-style: none; }
+  .job-bullets-list li {
+    font-size: 0.88rem; color: var(--muted);
+    padding: 3px 0 3px 18px;
+    position: relative; line-height: 1.65;
+  }
+  .job-bullets-list li::before {
+    content: '–'; position: absolute; left: 0;
+    color: var(--accent); font-weight: 700;
+  }
+  .job-bullets-list li strong { color: var(--text); }
+
+  /* ─── SKILLS ─── */
+  #skills { background: var(--navy); }
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .skill-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .skill-block-title {
+    font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: var(--accent2); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .skill-block-title::before {
+    content: ''; display: block;
+    width: 3px; height: 14px;
+    background: var(--accent2); border-radius: 2px;
+  }
+  .skill-list { list-style: none; }
+  .skill-list li {
+    font-size: 0.83rem; color: var(--muted);
+    padding: 3px 0; line-height: 1.5;
+  }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    background: var(--navy2);
+    text-align: center;
+  }
+  .contact-inner { max-width: 620px; margin: 0 auto; }
+  .contact-inner .section-label { justify-content: center; }
+  .contact-inner .section-label::before { display: none; }
+  .contact-sub {
+    color: var(--muted); font-size: 0.95rem;
+    line-height: 1.7; margin-bottom: 40px;
+  }
+  .contact-links {
+    display: flex; flex-wrap: wrap;
+    gap: 14px; justify-content: center; margin-bottom: 32px;
+  }
+  .contact-item {
+    display: flex; align-items: center; gap: 8px;
+    color: var(--muted); font-size: 0.83rem; font-weight: 600;
+    text-decoration: none;
+    background: var(--card); border: 1px solid var(--border);
+    padding: 10px 20px; border-radius: 8px;
+    transition: all 0.2s;
+  }
+  .contact-item:hover { color: var(--text); border-color: var(--accent); }
+  .contact-item svg { width: 16px; height: 16px; fill: currentColor; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    text-align: center; padding: 24px 32px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted); font-size: 0.75rem;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    section { padding: 64px 20px; }
+    .about-grid { grid-template-columns: 1fr; gap: 36px; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .proj-card.featured { grid-column: span 1; }
+    h1 { font-size: 2.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Kolin<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Sydney, NSW &nbsp;·&nbsp; Professional Engineer &nbsp;·&nbsp; MBA Finance</div>
+    <h1>Kolin<br><span>Cunningham</span></h1>
+    <p class="hero-sub">
+      Technical Commercial Leader at the intersection of energy transition, Web3, and digital product.
+      Decade of delivery across VPP / BESS design, infrastructure investment, and enterprise program management.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">Energy Transition</span>
+      <span class="tag">AEMO / NEM Markets</span>
+      <span class="tag">VPP · BESS · V2G</span>
+      <span class="tag">MBA Finance</span>
+      <span class="tag">Civil Engineering PE</span>
+      <span class="tag teal">Web3 / Blockchain</span>
+      <span class="tag teal">Full-Stack Founder</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        View Projects
+      </a>
+      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+      <a href="https://www.linkedin.com/in/kolincunningham/" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-dot"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">About</div>
+    <div class="section-title">Engineer. Founder. <span>Builder.</span></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          Professional Engineer (EA-certified, Civil) and <strong>MBA Finance</strong> graduate from UTS with a decade of delivery across energy infrastructure, digital program management, and regulatory strategy.
+        </p>
+        <p>
+          Deep NEM and AEMO market knowledge built through leading the <strong>commercial design of a blockchain-enabled Virtual Power Plant</strong> — engaging AEMO, AER, ARENA, Ausgrid, Endeavour Energy, and Austraclear across regulatory, grid-integration, funding, and market structure workstreams.
+        </p>
+        <p>
+          Proven at enterprise scale: directed POS infrastructure across all <strong>FIFA Women's World Cup 2023</strong> stadiums at Visa, and managed global digital delivery for Breville/Sage — a $3B+ ASX-listed business — across Australia, the USA, and Europe.
+        </p>
+        <p>
+          On the side: building open-source products including a rock climbing trail guide, EV carshare platform, and community planning tools — all deployed to production.
+        </p>
+        <div class="about-certs">
+          <span class="cert-pill">Engineers Australia — PE</span>
+          <span class="cert-pill">Washington Accord</span>
+          <span class="cert-pill">Blockchain Basics — Cyfrin 2026</span>
+          <span class="cert-pill">AROSE Consortium</span>
+          <span class="cert-pill">National Space Society — Innovation Manager</span>
+        </div>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Years commercial delivery</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">8+</div>
+          <div class="stat-label">Government & regulatory bodies engaged</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">$3B+</div>
+          <div class="stat-label">Business scale managed at Breville/Sage</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">80</div>
+          <div class="stat-label">Staff trained — FIFA WWC 2023 at Visa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">GitHub Projects</div>
+    <div class="section-title">Things I've <span>Built</span></div>
+    <div class="projects-grid">
+
+      <!-- CragTrails — featured -->
+      <div class="proj-card featured">
+        <div class="proj-header">
+          <div class="proj-icon">🧗</div>
+          <div class="proj-links">
+            <a href="https://cragtrails.vercel.app" target="_blank" class="proj-link">Live ↗</a>
+            <a href="https://github.com/KolinCunningham/cragtrails" target="_blank" class="proj-link">GitHub</a>
+          </div>
+        </div>
+        <div class="proj-name">CragTrails</div>
+        <div class="proj-desc">
+          Open-source rock climbing trail guide — the AllTrails of climbing. Powered by OpenBeta + Mountain Project data with a clean, accessible UI designed for everyone from beginners to pros. Built with a skeptical multi-agent CEO review process.
+        </div>
+        <div class="proj-footer">
+          <div class="proj-lang">
+            <span class="lang-dot lang-ts"></span> TypeScript
+          </div>
+          <span class="proj-status status-live">Live</span>
+        </div>
+      </div>
+
+      <!-- Swan Cars -->
+      <div class="proj-card">
+        <div class="proj-header">
+          <div class="proj-icon">⚡</div>
+          <div class="proj-links">
+            <a href="https://swancars-mu.vercel.app" target="_blank" class="proj-link">Live ↗</a>
+            <a href="https://github.com/KolinCunningham/swancars" target="_blank" class="proj-link">GitHub</a>
+          </div>
+        </div>
+        <div class="proj-name">Swan Cars</div>
+        <div class="proj-desc">
+          EV carshare network platform — the digital product behind Swan Energy's EV mobility concept. Connects mobility demand with energy sector revenue streams.
+        </div>
+        <div class="proj-footer">
+          <div class="proj-lang"><span class="lang-dot lang-js"></span> JavaScript</div>
+          <span class="proj-status status-live">Live</span>
+        </div>
+      </div>
+
+      <!-- BusinessDelegate -->
+      <div class="proj-card">
+        <div class="proj-header">
+          <div class="proj-icon">🤝</div>
+          <div class="proj-links">
+            <a href="https://business-delegate-kolins-projects-31ac325f.vercel.app" target="_blank" class="proj-link">Live ↗</a>
+            <a href="https://github.com/KolinCunningham/BusinessDelegate" target="_blank" class="proj-link">GitHub</a>
+          </div>
+        </div>
+        <div class="proj-name">BusinessDelegate</div>
+        <div class="proj-desc">
+          AI-powered business delegation and workflow management tool built with TypeScript. Helps founders and operators delegate work intelligently.
+        </div>
+        <div class="proj-footer">
+          <div class="proj-lang"><span class="lang-dot lang-ts"></span> TypeScript</div>
+          <span class="proj-status status-live">Live</span>
+        </div>
+      </div>
+
+      <!-- Mosman Planning -->
+      <div class="proj-card">
+        <div class="proj-header">
+          <div class="proj-icon">🗺️</div>
+          <div class="proj-links">
+            <a href="https://mosman-planning.vercel.app" target="_blank" class="proj-link">Live ↗</a>
+            <a href="https://github.com/KolinCunningham/mosman-planning" target="_blank" class="proj-link">GitHub</a>
+          </div>
+        </div>
+        <div class="proj-name">Mosman Planning Intelligence</div>
+        <div class="proj-desc">
+          Community-led planning system for Mosman LGA — LEP map viewer, suggestion engine, give-take audit, and 20-year horizon analysis. Civic tech in production.
+        </div>
+        <div class="proj-footer">
+          <div class="proj-lang"><span class="lang-dot lang-js"></span> JavaScript</div>
+          <span class="proj-status status-live">Live</span>
+        </div>
+      </div>
+
+      <!-- PTB Manufacturing -->
+      <div class="proj-card">
+        <div class="proj-header">
+          <div class="proj-icon">🏭</div>
+          <div class="proj-links">
+            <a href="https://github.com/KolinCunningham/ptbmanufacturing" target="_blank" class="proj-link">GitHub</a>
+          </div>
+        </div>
+        <div class="proj-name">PTB Manufacturing</div>
+        <div class="proj-desc">
+          Official website for PTB Manufacturing — Australian beauty and personal care product manufacturing. TypeScript build with production-grade design.
+        </div>
+        <div class="proj-footer">
+          <div class="proj-lang"><span class="lang-dot lang-ts"></span> TypeScript</div>
+          <span class="proj-status status-dev">In Progress</span>
+        </div>
+      </div>
+
+      <!-- Tramada -->
+      <div class="proj-card">
+        <div class="proj-header">
+          <div class="proj-icon">✈️</div>
+          <div class="proj-links">
+            <a href="https://github.com/KolinCunningham/Tramada" target="_blank" class="proj-link">GitHub</a>
+          </div>
+        </div>
+        <div class="proj-name">Tramada</div>
+        <div class="proj-desc">
+          Travel management integration project. JavaScript-based tooling around the Tramada travel platform ecosystem.
+        </div>
+        <div class="proj-footer">
+          <div class="proj-lang"><span class="lang-dot lang-js"></span> JavaScript</div>
+          <span class="proj-status status-dev">In Progress</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label">Career</div>
+    <div class="section-title">Professional <span>Experience</span></div>
+    <div class="timeline">
+
+      <div class="job-item">
+        <div class="job-dot current"></div>
+        <div class="job-meta">
+          <span class="job-company-name">SigIntZero</span>
+          <span class="job-dates-badge">Jan 2026 – Present</span>
+        </div>
+        <div class="job-role">Commercial Strategy Advisor — Web3 Security</div>
+        <ul class="job-bullets-list">
+          <li>Advise a Web3 security firm on commercial positioning — translating smart contract audit capability and protocol risk assessment into value propositions for DeFi founders, VCs, and ecosystem partners.</li>
+          <li>Represented at <strong>Black Swan Summit 2026</strong>; develop partner conversations across security, venture, and infrastructure channels.</li>
+        </ul>
+      </div>
+
+      <div class="job-item">
+        <div class="job-dot"></div>
+        <div class="job-meta">
+          <span class="job-company-name">Swan Innovations</span>
+          <span class="job-dates-badge">Oct 2023 – Dec 2025</span>
+        </div>
+        <div class="job-role">Commercial Program Director — VPP &amp; Energy Trading</div>
+        <ul class="job-bullets-list">
+          <li>Designed end-to-end commercial architecture for an AEMO-compliant <strong>Virtual Power Plant</strong> — integrating BESS, V2G, and customer-sited assets with decentralised energy trading logic mapped to NEM dispatch and pricing mechanisms.</li>
+          <li>Engaged <strong>8+ government and regulatory bodies</strong> over 18 months — AEMO, AER, Austraclear, ARENA, Ausgrid, Endeavour Energy, ASIC — to validate market, regulatory, grid-integration, and funding assumptions.</li>
+          <li>Partnered with a law firm to structure an <strong>AMIT-compliant, dual-token fund</strong> aligned to ASIC guidance on digital asset classification and tax-efficient distribution.</li>
+          <li>Built and directed a specialist team across blockchain, electrical engineering, and software; converted technical workstreams into investor, grant, and partner-facing commercial narratives.</li>
+        </ul>
+      </div>
+
+      <div class="job-item">
+        <div class="job-dot"></div>
+        <div class="job-meta">
+          <span class="job-company-name">Visa Inc.</span>
+          <span class="job-dates-badge">May 2023 – Sep 2023</span>
+        </div>
+        <div class="job-role">Digital Product &amp; Program Lead — FIFA Women's World Cup 2023</div>
+        <ul class="job-bullets-list">
+          <li>Directed POS payment infrastructure deployment across <strong>all FIFA WWC stadiums</strong> in Australia and New Zealand — coordinating 20+ stakeholders including Visa executives, acquirers, merchants, and stadium operators.</li>
+          <li>Led testing, training, and operational readiness for <strong>80 operational personnel</strong> across Visa/FIFA payment acceptance compliance.</li>
+          <li>Delivered Visa prepaid card website and payment acceptance workflows, managing creative, technical, and compliance workstreams concurrently.</li>
+        </ul>
+      </div>
+
+      <div class="job-item">
+        <div class="job-dot"></div>
+        <div class="job-meta">
+          <span class="job-company-name">Breville | Sage</span>
+          <span class="job-dates-badge">Apr 2022 – Dec 2022</span>
+        </div>
+        <div class="job-role">Global Digital Experiences Project Manager</div>
+        <ul class="job-bullets-list">
+          <li>Managed global digital product and campaign delivery for a <strong>$3B+ ASX-listed</strong> business across Australia, the USA, and Europe — coordinating 20+ stakeholders across marketing, IT, design, and external teams.</li>
+          <li>Designed and implemented a centralised promotions management system to improve visibility and execution across global digital workstreams.</li>
+        </ul>
+      </div>
+
+      <div class="job-item">
+        <div class="job-dot"></div>
+        <div class="job-meta">
+          <span class="job-company-name">Swan Energy</span>
+          <span class="job-dates-badge">Mar 2020 – Jan 2022</span>
+        </div>
+        <div class="job-role">Founder &amp; Commercial Director — EV Mobility Platform</div>
+        <ul class="job-bullets-list">
+          <li>Founded EV carshare platform, building a <strong>five-year financial model</strong> connecting mobility demand, insurance, technology build costs, and energy sector revenue streams.</li>
+          <li>Secured a favourable insurance contract through commercial negotiation; engaged NSW Government ministers on EV mobility policy.</li>
+          <li>Led global development team using Agile; defined product requirements, UI/UX wireframes, application architecture, and data flows.</li>
+        </ul>
+      </div>
+
+      <div class="job-item">
+        <div class="job-dot"></div>
+        <div class="job-meta">
+          <span class="job-company-name">Halff Associates</span>
+          <span class="job-dates-badge">2015 – 2020</span>
+        </div>
+        <div class="job-role">Land Development Engineer</div>
+        <ul class="job-bullets-list">
+          <li>Civil infrastructure delivery, regulatory compliance, multi-disciplinary team coordination, and client proposals for major land development projects across Texas.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">Capabilities</div>
+    <div class="section-title">Core <span>Skills</span></div>
+    <div class="skills-grid">
+      <div class="skill-block">
+        <div class="skill-block-title">Energy &amp; NEM Markets</div>
+        <ul class="skill-list">
+          <li>VPP / DER / BESS commercial design</li>
+          <li>V2G &amp; grid integration strategy</li>
+          <li>AEMO / AER regulatory engagement</li>
+          <li>Dispatch logic &amp; NEM market structure</li>
+          <li>Renewable energy origination</li>
+          <li>ARENA &amp; CEFC grant strategy</li>
+        </ul>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-title">Commercial Finance</div>
+        <ul class="skill-list">
+          <li>Financial modelling &amp; investment cases</li>
+          <li>Infrastructure capital structuring</li>
+          <li>AMIT-compliant fund design</li>
+          <li>Due diligence &amp; pricing strategy</li>
+          <li>VC / investor engagement</li>
+          <li>Web3 token economics</li>
+        </ul>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-title">Delivery &amp; Leadership</div>
+        <ul class="skill-list">
+          <li>Multi-disciplinary program management</li>
+          <li>Technical-to-commercial translation</li>
+          <li>Stakeholder management — govt, VC, utility</li>
+          <li>Agile product &amp; requirements definition</li>
+          <li>Cross-functional team leadership</li>
+          <li>React / TypeScript / JavaScript</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="section-label">Contact</div>
+      <div class="section-title">Let's <span>Talk</span></div>
+      <p class="contact-sub">
+        Open to senior commercial, infrastructure investment, and strategy conversations at the intersection of energy transition and financial markets.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:ktcunningham06@gmail.com" class="contact-item">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          ktcunningham06@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/kolincunningham/" target="_blank" class="contact-item">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/KolinCunningham" target="_blank" class="contact-item">
+          <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          GitHub
+        </a>
+        <a href="tel:0401774289" class="contact-item">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 13 19.79 19.79 0 01.07 4.41 2 2 0 012 2.24h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          0401 774 289
+        </a>
+      </div>
+      <a href="/Users/caesar/Desktop/Kolin_Cunningham_Resume_Energy.html" class="btn btn-primary">Download Resume →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Kolin Cunningham · Sydney, NSW · Built 2026</p>
+</footer>
+
+<script>
+  // Smooth active nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-links a');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.style.color = '');
+        const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+        if (active) active.style.color = '#e8edf4';
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => obs.observe(s));
+
+  // Fade-in on scroll
+  const fadeEls = document.querySelectorAll('.proj-card, .job-item, .skill-block, .stat-card');
+  const fadeObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(18px)';
+    el.style.transition = 'opacity 0.45s ease, transform 0.45s ease';
+    fadeObs.observe(el);
+  });
+</script>
+</body>
+</html>
