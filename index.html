@@ -371,7 +371,7 @@
   /* ─── SKILLS ─── */
   #skills { background: var(--cream2); }
   .skills-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
+    display: grid; grid-template-columns: repeat(4, 1fr);
     gap: 20px;
   }
   .skill-block {
@@ -538,13 +538,62 @@
     background: var(--orange); width: 24px; border-radius: 4px;
   }
 
+  /* ─── CAROUSEL COUNTER & HINT ─── */
+  .cs-counter {
+    position: absolute; top: 20px; right: 28px;
+    font-size: 0.7rem; font-weight: 600;
+    color: var(--muted); letter-spacing: 1px;
+    font-variant-numeric: tabular-nums;
+  }
+  .cs-body { position: relative; }
+  .carousel-hint {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 0.7rem; font-weight: 600;
+    color: var(--muted); letter-spacing: 1px;
+    text-transform: lowercase;
+    opacity: 0.7;
+  }
+
+  /* ─── EXPERIENCE ADDITIONS ─── */
+  .section-intro {
+    font-size: 0.92rem; color: var(--text2);
+    line-height: 1.7; margin-top: -36px; margin-bottom: 44px;
+    font-style: italic;
+  }
+  .job-location-badge {
+    font-size: 0.7rem; font-weight: 600;
+    color: var(--muted);
+    background: var(--card); border: 1px solid var(--border);
+    padding: 2px 10px; border-radius: 20px;
+    box-shadow: var(--shadow);
+  }
+  .job-current-badge {
+    font-size: 0.7rem; font-weight: 700;
+    color: #16a34a;
+    background: rgba(34,197,94,0.08);
+    border: 1px solid rgba(34,197,94,0.3);
+    padding: 2px 10px; border-radius: 20px;
+    display: inline-flex; align-items: center; gap: 5px;
+  }
+  .current-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #16a34a;
+    display: inline-block;
+    animation: pulse-green 2s ease-in-out infinite;
+  }
+  @keyframes pulse-green {
+    0%,100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
   /* ─── RESPONSIVE ─── */
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
     .nav-links { display: none; }
     section { padding: 64px 20px; }
     .about-grid { grid-template-columns: 1fr; gap: 36px; }
-    .skills-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
     h1 { font-size: 2.4rem; }
     .carousel-slide { flex-direction: column; min-height: auto; }
     .cs-img-wrap { flex: 0 0 220px; min-height: 220px; }
@@ -674,7 +723,7 @@
 <section id="projects">
   <div class="container">
     <div class="section-label">Projects</div>
-    <div class="section-title">Things I've <span>Built</span></div>
+    <div class="section-title">Projects & <span>Products</span></div>
 
     <div class="carousel-wrap">
       <button class="carousel-btn carousel-prev" aria-label="Previous">&#8592;</button>
@@ -692,6 +741,7 @@
               <a href="https://cragtrails.vercel.app" target="_blank" class="cs-live-btn">Live ↗</a>
             </div>
             <div class="cs-body">
+              <div class="cs-counter">01 / 07</div>
               <div class="cs-icon">🧗</div>
               <div class="cs-name">CragTrails</div>
               <div class="cs-desc">Open-source rock climbing trail guide — the AllTrails of climbing. Powered by OpenBeta + Mountain Project. Free core, beautiful UI for all skill levels.</div>
@@ -711,6 +761,7 @@
               <a href="https://swan-innovations.com" target="_blank" class="cs-live-btn">Live ↗</a>
             </div>
             <div class="cs-body">
+              <div class="cs-counter">02 / 07</div>
               <div class="cs-icon">🦢</div>
               <div class="cs-name">Swan Innovations</div>
               <div class="cs-desc">Distributed energy storage for a sustainable future. AEMO-compliant VPP integrating BESS, V2G, and customer-sited assets with decentralised energy trading. Affiliates: AEMO, UTS, Austraclear, AZZO, Risen Energy.</div>
@@ -730,6 +781,7 @@
               <a href="https://beam-cyan.vercel.app" target="_blank" class="cs-live-btn">Live ↗</a>
             </div>
             <div class="cs-body">
+              <div class="cs-counter">03 / 07</div>
               <div class="cs-icon">⛓️</div>
               <div class="cs-name">BEAM</div>
               <div class="cs-desc">Real-world energy assets on-chain, on-demand. Blockchain-enabled platform for tokenised energy asset compliance, KYC-to-yield flows, and live NEM market data.</div>
@@ -749,6 +801,7 @@
               <a href="https://swancars-mu.vercel.app" target="_blank" class="cs-live-btn">Live ↗</a>
             </div>
             <div class="cs-body">
+              <div class="cs-counter">04 / 07</div>
               <div class="cs-icon">⚡</div>
               <div class="cs-name">Swan Cars</div>
               <div class="cs-desc">EV carshare network platform — the digital product behind Swan Energy's EV mobility concept. Connects mobility demand with energy sector revenue streams.</div>
@@ -768,6 +821,7 @@
               <a href="https://business-delegate-kolins-projects-31ac325f.vercel.app" target="_blank" class="cs-live-btn">Live ↗</a>
             </div>
             <div class="cs-body">
+              <div class="cs-counter">05 / 07</div>
               <div class="cs-icon">🤝</div>
               <div class="cs-name">BusinessDelegate</div>
               <div class="cs-desc">AI-powered business delegation and workflow management tool. Helps founders and operators delegate work intelligently across teams.</div>
@@ -787,6 +841,7 @@
               <a href="https://mosman-planning.vercel.app" target="_blank" class="cs-live-btn">Live ↗</a>
             </div>
             <div class="cs-body">
+              <div class="cs-counter">06 / 07</div>
               <div class="cs-icon">🗺️</div>
               <div class="cs-name">Mosman Planning Intelligence</div>
               <div class="cs-desc">Community-led planning system for Mosman LGA — LEP map viewer, suggestion engine, give-take audit, and 20-year horizon analysis. Civic tech in production.</div>
@@ -803,6 +858,7 @@
               <span>Coming Soon</span>
             </div>
             <div class="cs-body">
+              <div class="cs-counter">07 / 07</div>
               <div class="cs-icon">🏭</div>
               <div class="cs-name">PTB Manufacturing</div>
               <div class="cs-desc">Official website for PTB Manufacturing — Australian beauty and personal care product manufacturing. TypeScript build with production-grade design.</div>
@@ -817,6 +873,7 @@
       </div><!-- end track-outer -->
 
       <div class="carousel-dots" id="carouselDots"></div>
+      <div class="carousel-hint">drag to explore &rarr;</div>
     </div>
 
   </div>
@@ -827,6 +884,7 @@
   <div class="container">
     <div class="section-label">Career</div>
     <div class="section-title">Professional <span>Experience</span></div>
+    <p class="section-intro">A decade of delivery across energy, digital product, and commercial strategy.</p>
     <div class="timeline">
 
       <div class="job-item">
@@ -834,6 +892,8 @@
         <div class="job-meta">
           <span class="job-company-name">SigIntZero</span>
           <span class="job-dates-badge">Jan 2026 – Present</span>
+          <span class="job-location-badge">Sydney, NSW</span>
+          <span class="job-current-badge"><span class="current-dot"></span>Current</span>
         </div>
         <div class="job-role">Commercial Strategy Advisor — Web3 Security</div>
         <ul class="job-bullets-list">
@@ -847,6 +907,7 @@
         <div class="job-meta">
           <span class="job-company-name">Swan Innovations</span>
           <span class="job-dates-badge">Oct 2023 – Dec 2025</span>
+          <span class="job-location-badge">Sydney, NSW</span>
         </div>
         <div class="job-role">Commercial Program Director — VPP &amp; Energy Trading</div>
         <ul class="job-bullets-list">
@@ -862,6 +923,7 @@
         <div class="job-meta">
           <span class="job-company-name">Visa Inc.</span>
           <span class="job-dates-badge">May 2023 – Sep 2023</span>
+          <span class="job-location-badge">Sydney, NSW</span>
         </div>
         <div class="job-role">Digital Product &amp; Program Lead — FIFA Women's World Cup 2023</div>
         <ul class="job-bullets-list">
@@ -876,6 +938,7 @@
         <div class="job-meta">
           <span class="job-company-name">Breville | Sage</span>
           <span class="job-dates-badge">Apr 2022 – Dec 2022</span>
+          <span class="job-location-badge">Sydney, NSW</span>
         </div>
         <div class="job-role">Global Digital Experiences Project Manager</div>
         <ul class="job-bullets-list">
@@ -889,6 +952,7 @@
         <div class="job-meta">
           <span class="job-company-name">Swan Energy</span>
           <span class="job-dates-badge">Mar 2020 – Jan 2022</span>
+          <span class="job-location-badge">Sydney, NSW</span>
         </div>
         <div class="job-role">Founder &amp; Commercial Director — EV Mobility Platform</div>
         <ul class="job-bullets-list">
@@ -903,6 +967,7 @@
         <div class="job-meta">
           <span class="job-company-name">Halff Associates</span>
           <span class="job-dates-badge">2015 – 2020</span>
+          <span class="job-location-badge">Austin, TX</span>
         </div>
         <div class="job-role">Land Development Engineer</div>
         <ul class="job-bullets-list">
@@ -918,7 +983,7 @@
 <section id="skills">
   <div class="container">
     <div class="section-label">Capabilities</div>
-    <div class="section-title">Core <span>Skills</span></div>
+    <div class="section-title">Capabilities & <span>Tools</span></div>
     <div class="skills-grid">
       <div class="skill-block">
         <div class="skill-block-title">Energy &amp; NEM Markets</div>
@@ -950,7 +1015,17 @@
           <li>Stakeholder management — govt, VC, utility</li>
           <li>Agile product &amp; requirements definition</li>
           <li>Cross-functional team leadership</li>
+        </ul>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-title">Technology &amp; Tools</div>
+        <ul class="skill-list">
           <li>React / TypeScript / JavaScript</li>
+          <li>Next.js / Vercel</li>
+          <li>Blockchain / Solana</li>
+          <li>Financial Modelling (Excel)</li>
+          <li>Agile / Jira / Confluence</li>
+          <li>Figma / UI-UX wireframing</li>
         </ul>
       </div>
     </div>
